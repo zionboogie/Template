@@ -17,7 +17,7 @@ $(function() {
       var h = ui.newHeader;
       var p = ui.newPanel;
       if ($.trim(p.html()) === '') {
-        p.load('doc/' + h.attr('href'));
+        p.load(h.attr('href'));
       }
     },
     // 3パネル表示後にパネルをリフレッシュ
