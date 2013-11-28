@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Accordionウィジェット</title>
+<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+<script>
+$(function() {
+  $('#acc').accordion({
+    // 暫定的に異なるパネルを開いておく
+    active: $('#acc > div').length,
+    // 2パネル切替時に新しいパネルを非同期読み込み
+    beforeActivate: function(e, ui) {
+      var h = ui.newHeader;
+      var p = ui.newPanel;
+      if ($.trim(p.html()) === '') {
+        p.load('doc/' + h.attr('href'));
+      }
+    },
+    // 3パネル表示後にパネルをリフレッシュ
+    activate: function(e, ui) {
+      $(this).accordion('refresh');
+    }
+  })
+  // 4最後に目的のパネルを開く
+  .accordion('option', 'active', 2);
+});
+</script>
+</head>
+<body>
+
+<!--1空のパネルを準備-->
+<div id="acc">
+  <a href="backbone.html">Backbone.js</a>
+  <div data-file="backbone.html"></div>
+  <a href="knockout.html">Knockout</a>
+  <div data-file="knockout.html"></div>
+  <a href="knockout.html">Angular.js</a>
+  <div data-file="angular.html"></div>
+</div>
+</body>
+</html>
