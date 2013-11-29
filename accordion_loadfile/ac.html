@@ -6,12 +6,18 @@
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script>
 $(function() {
-
-	// 次ページへのリンクボタンが押されたら
-	$('#box-accordion a').click(function(){
-		$("#faq01").load("01.html");
-	});
-});
+    $(document).on('click', 'box-accordion a', function (e) {
+        if (this.href) {
+            $.ajax(this.href, {
+                dataType: 'html',
+                success: function(data) {
+                    $('#faq01').empty().html(data);
+                }
+            });
+        }
+        e.preventDefault();
+    });
+}); 
 </script>
 </head>
 <body>
@@ -28,9 +34,9 @@ $(function() {
 
 <!-- パネル -->
 <div id="box-accordion">
-	  <a href="#" onclick="dataLayer.push({'event': 'faq','pageUrl':'/Template/accordion_loadfile/01.html'});">01</a>
+	  <a href="01.html">01</a>
 	  <div id="faq01"></div>
-	  <a href="#test03">03</a>
+	  <a href="02.html">03</a>
 	  <div></div>
 </div>
 
