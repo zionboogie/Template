@@ -1,26 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8" />
-<title>Accordionウィジェット</title>
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script>
-$(function() {
-    $(document).on('click', 'box-accordion a', function (e) {
-        if (this.href) {
-            $.ajax(this.href, {
-                dataType: 'html',
-                success: function(data) {
-                    $('#faq01').empty().html(data);
-                }
-            });
-        }
-        e.preventDefault();
-    });
-}); 
-</script>
-</head>
-<body>
+<title>Google Analytics test</title>
+<style>
+body {
+	width: 860px;
+}
+div {
+	padding: 10px;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -29,15 +21,35 @@ $(function() {
 
   ga('create', 'UA-45275544-1', 'rhythmfactory.jp');
   ga('send', 'pageview');
-
 </script>
 
-<!-- パネル -->
-<div id="box-accordion">
-	  <a href="01.html">01</a>
-	  <div id="faq01"></div>
-	  <a href="02.html">03</a>
-	  <div></div>
+<script>
+$(function() {
+	$(document).on('click', 'ul a', function (e) {
+		if (this.href) {
+			if (ga) {
+				ga('send', 'pageview',{page:this.href, title:this.title});
+			}
+			$.ajax(this.href, {
+				dataType: 'html',
+				success: function(data) {
+					$('#contents').empty().html(data);
+				}
+			});
+		}
+		e.preventDefault();
+	});
+});
+</script>
+</head>
+<body>
+<ul>
+	<li><a href="01.html" title="test1">ga test1</a></li>
+	<li><a href="02.html" title="test2">ga test2</a></li>
+</ul>
+
+<div id="contents" style="border:1px solid #ccc">
+Hello!
 </div>
 
 </body>
