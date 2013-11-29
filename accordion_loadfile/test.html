@@ -2,7 +2,19 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>test02</title>
+<title>Accordionウィジェット</title>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+$(function() {
+
+	// 次ページへのリンクボタンが押されたら
+	$('#box-accordion a').click(function(){
+		$("#faq01").load("02.html");
+	});
+});
+</script>
+</head>
+<body>
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M6HFLK"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -13,19 +25,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-M6HFLK');</script>
 <!-- End Google Tag Manager -->
 
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script>
-$(function() {
 
-_gaq.push(['_trackPageview', location.pathname+location.hash]);
+<!-- パネル -->
+<div id="box-accordion">
+	  <a href="#" onclick="dataLayer.push({'event': 'faq','pageUrl':'/Template/accordion_loadfile/01.html'});">01</a>
+	  <div id="faq01"></div>
+	  <a href="#test02">02</a>
+	  <div></div>
+</div>
 
-});
-</script>
-
-
-
-</head>
-<body>
-test02
 </body>
 </html>
