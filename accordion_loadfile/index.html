@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>Google Analytics test</title>
+<style>
+body {
+	width: 860px;
+}
+div {
+	padding: 10px;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+$(function() {
+	$(document).on('click', 'ul a', function (e) {
+		if (this.href) {
+			if (ga) {
+				ga('send', 'pageview',{page:this.href, title:this.title});
+			}
+			$.ajax(this.href, {
+				dataType: 'html',
+				success: function(data) {
+					$('#contents').empty().html(data);
+				}
+			});
+		}
+		e.preventDefault();
+	});
+});
+</script>
+</head>
+<body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M6HFLK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M6HFLK');</script>
+<!-- End Google Tag Manager -->
+
+<ul>
+	<li><a href="01.html" title="test1">ga test1</a></li>
+	<li><a href="02.html" title="test2">ga test2</a></li>
+</ul>
+
+<div id="contents" style="border:1px solid #ccc">
+Hello!
+</div>
+
+</body>
+</html>
