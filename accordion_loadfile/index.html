@@ -4,22 +4,21 @@
 <meta charset="UTF-8" />
 <title>Google Analytics test</title>
 <style>
-body {
-	width: 860px;
-}
 div {
 	padding: 10px;
 }
 </style>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
 <script>
 $(function() {
 	$(document).on('click', 'ul a', function (e) {
 		if (this.href) {
+		/*
 			if (ga) {
 				ga('send', 'pageview',{page:this.href, title:this.title});
 			}
+			*/
 			$.ajax(this.href, {
 				dataType: 'html',
 				success: function(data) {
@@ -44,7 +43,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 <ul>
-	<li><a href="01.html" title="test1">ga test1</a></li>
+	<li><a href="04.html" title="test4" onclick="dataLayer.push({'event': 'pageview' , 'pageUrl' : 'url4' , 'pageTitle' : 'title4'});">ga test4</a></li>
 	<li><a href="02.html" title="test2">ga test2</a></li>
 </ul>
 
