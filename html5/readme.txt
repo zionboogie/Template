@@ -8,7 +8,7 @@ min_layout_template.html
 lt_ie9.html
 
 ・パーツ集
-parts.html
+module.html
 
 
 読み込むリセットCSSはnormalize.css。
