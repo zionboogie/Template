@@ -1,0 +1,5 @@
+<h3>スマホの文字サイズ調整</h3>
+
+body {
+	  -webkit-text-size-adjust: 100%;
+}
