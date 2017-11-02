@@ -1,27 +1,30 @@
-�E�ŏ����̃e���v���[�g
+・最小限のテンプレート
 min_template.html
 
-�Eheader�Anav�Ȃǂ����炩���ߗp��
+・header、navなどをあらかじめ用意
 min_layout_template.html
 
-�Eie9�ȉ��ɂ��Ή�����
+・min_layout_template.htmlをベースにSass対応
+min_layout_sass_template.html
+
+・ie9以下にも対応する
 lt_ie9.html
 
-�E�p�[�c�W
+・パーツ集
 module.html
 
 
 
-�ǂݍ��ރ��Z�b�gCSS��normalize.css�B
+読み込むリセットCSSはhtml5doctor
 <<<<<<< .mine
 
 
-## HTML5�ŏ���
+## HTML5で書く
 ``` html
 <!DOCTYPE html>
 ```
 
-## CSS�n�b�N��IE�Ή�
+## CSSハックでIE対応
 ``` html
 <!--[if lt IE 7 ]><html class="ie ie6" lang="ja"><![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="ja"><![endif]-->
@@ -29,7 +32,7 @@ module.html
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="ja"><!--<![endif]-->
 ```
 
-## UA�U��
+## ユーザーエージェントの偽装
 ``` html
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 ```
@@ -40,7 +43,7 @@ module.html
 ```
 
 
-<h3>�X�}�z�̕����T�C�Y����</h3>
+<h3>スマホの文字サイズ調整</h3>
 ``` css
 body {
 	  -webkit-text-size-adjust: 100%;
@@ -49,29 +52,30 @@ body {
 
 ## OGP
 ``` html
-<meta property="og:title" content="�^�C�g��">
+<meta property="og:title" content="タイトル">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://�C�ӂ�URL">
-<meta property="og:image" content="http://�C�ӂ�URL/og_image.png">
+<meta property="og:url" content="http://任意のURL">
+<meta property="og:image" content="http://任意のURL/og_image.png">
 <meta property="og:site_name" content="">
 <meta property="og:description" content="" />
-<meta property="fb:app_id" content="�C�ӂ�ID">
+<meta property="fb:app_id" content="任意のID">
 ```
 
 ## CSS
 ``` html
 <link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/reset.css">
 ```
 
 
-## jQuery�Ή�
+## jQuery対応
 <h3>CDN</h3>
 ``` html
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script> (window.jQuery || document .write('<script src="js/jquery-1.11.2.min.js"><\/script>')); </script>
 ```
 
-<h3>IE8�ȉ����Ή��������ꍇ</h3>
+<h3>IE8以下も対応したい場合</h3>
 ``` html
 <!--[if lt IE 9]>
 	<script src="js/html5.js"></script>
@@ -81,62 +85,62 @@ body {
 ```
 
 
-## role�����ɂ���
-role����(�����h�}�[�N����)�Ƃ́AWEB�y�[�W���\������v�f�ɑ΂��Ė���������������̂ŁA�����\���ɑ΂��ڈ�����邱�Ƃ�Web�A�N�Z�V�r���e�B�̌����}�邱�Ƃ��ł��܂��B
+## role属性について
+role属性(ランドマーク属性)とは、WEBページを構成する要素に対して役割を持たせるもので、文書構造に対し目印をつけることでWebアクセシビリティの向上を図ることができます。
 
-�������Ă����̂���₱�����ł����A�Ⴆ��header�v�f�̓y�[�W���ɉ������Ă������ł���ˁB�����Ƌ�̓I�ɂ����΃y�[�W��header�Ƃ��A�R���e���c(section�Ƃ�)���ɂ���header�ł��Brole�����ł���ubanner�v��t�^���邱�ƂŁA�y�[�W��header����Ƃ����悤�ɖ����I�ɖ�����t�^���邱�Ƃ��ł��܂��B
+役割っていうのがややこしいですが、例えばheader要素はページ内に何個あってもいいですよね。もっと具体的にいえばページのheaderとか、コンテンツ(sectionとか)内にあるheaderです。role属性である「banner」を付与することで、ページのheaderだよというように明示的に役割を付与することができます。
 
 
 <h3>header</h3>
 ``` html
 <header role="banner">
-	<h1>���S</h1>
+	<h1>ロゴ</h1>
 </header>
 ```
-banner�̓w�b�_�[��\���܂��B��{�I�Ƀy�[�W����1�����ł��B
+bannerはヘッダーを表します。基本的にページ内で1個だけです。
 
 <h3>nav</h3>
 ``` html
 <nav role="navigation">
-	�O���[�o���i�r
+	グローバルナビ
 </nav>
 ```
-navigation�̓h�L�������g��֘A����h�L�������g�̃i�r�Q�[�V�����������܂��B���Ȃ݂ɁAnav�̓����N�悪��v�ȃy�[�W�̂Ƃ��Ɏg���̂��K�؂Ȃ̂ŁA�O���[�o���i�r�͓��Ă͂܂�܂��ˁB
+navigationはドキュメントや関連するドキュメントのナビゲーションを示します。ちなみに、navはリンク先が主要なページのときに使うのが適切なので、グローバルナビは当てはまりますね。
 
-��������Q�l�ɂ���Ƃ����ł�
-<a href="http://html-five.jp/163/" target="_blank">HTML5�̃}�[�N�A�b�v(2) nav�̎g����</a>
+こちらを参考にするといいです
+<a href="http://html-five.jp/163/" target="_blank">HTML5のマークアップ(2) navの使い方</a>
 
 
 
 <h3>main</h3>
 ``` html
 <main role="main">
-	���C���R���e���c
+	メインコンテンツ
 </main>
 ```
-main�̓h�L�������g�̂�����v�ȃR���e���c�������܂��B�y�[�W�� 1 �̂݁B
-�Ȃ̂ŁA�h�L�������g��A�v���P�[�V������ body �̃��C���R���e���c��\���Amain�v�f�Ɏg���̂��K�؂ł��ˁB
+mainはドキュメントのうち主要なコンテンツを示します。ページに 1 つのみ。
+なので、ドキュメントやアプリケーションの body のメインコンテンツを表す、main要素に使うのが適切ですね。
 
 <h3>aside</h3>
 ``` html
 <aside role="complementary">
-	�T�C�h�R���e���c
+	サイドコンテンツ
 </aside>
 ```
-complementary�̓h�L�������g��⏕������������܂��Baside���K�؂��Ǝv���܂��B
+complementaryはドキュメントを補助する情報を示します。asideが適切だと思います。
 
 <h3>footer</h3>
 ``` html
 <footer role="contentinfo">
-	�t�b�^�[
+	フッター
 </footer>
 ```
 
-contentinfo�́A�R���e���c�Ɋւ��钘�쌠��v���C�o�V�[���ւ̃����N�������B�y�[�W�� 1 �̂݁B�R�s�[���C�g�Ȃǂ�\������t�b�^�[�������ł��傤�B
+contentinfoは、コンテンツに関する著作権やプライバシー情報へのリンクを示す。ページに 1 つのみ。コピーライトなどを表示するフッターがいいでしょう。
 
 
-## �e���v���[�g
-��L�܂Ƃ߂�ƈȉ��̂悤�ɂȂ�܂��B�Ƃ肠�����A���̂Ƃ��낱��Ȃ��񂶂ŗǂ������Ȃ̂ŁA���΂炭�͂���ŁB�����A���̂����X�V����Ǝv���܂��B
+## テンプレート
+上記まとめると以下のようになります。とりあえず、今のところこんなかんじで良さそうなので、しばらくはこれで。多分、そのうち更新すると思います。
 
 ``` html
 <!DOCTYPE html>
@@ -150,32 +154,32 @@ contentinfo�́A�R���e���c�Ɋւ��钘�쌠��v���C�o�V�[���ւ̃����N�������B�y�[�
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
-	<meta property="og:title" content="�^�C�g��">
+	<meta property="og:title" content="タイトル">
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="http://�C�ӂ�URL">
-	<meta property="og:image" content="http://�C�ӂ�URL/og_image.png">
+	<meta property="og:url" content="http://任意のURL">
+	<meta property="og:image" content="http://任意のURL/og_image.png">
 	<meta property="og:site_name" content="">
 	<meta property="og:description" content="" />
-	<meta property="fb:app_id" content="�C�ӂ�ID">
+	<meta property="fb:app_id" content="任意のID">
 	<title>Document</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<header role="banner">
-		<h1>���S</h1>
+		<h1>ロゴ</h1>
 	</header>
 	<nav role="navigation">
-		�O���[�o���i�r
+		グローバルナビ
 	</nav>
 	<main role="main">
-		���C���R���e���c
+		メインコンテンツ
 	</main>
 	<aside role="complementary">
-		�T�C�h�R���e���c
+		サイドコンテンツ
 	</aside>
 	<footer role="contentinfo">
-		�t�b�^�[
+		フッター
 	</footer>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -198,184 +202,6 @@ body {
 ```
 =======
 test3
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
