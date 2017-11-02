@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+// Bourbon読み込み
+@import "bourbon";
+// 基本設定の読み込み
+@import "_reset.scss";	// リセットCSS読み込み
+@import "_base.scss";
+
